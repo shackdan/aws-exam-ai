@@ -8,7 +8,7 @@ from typing import List, Optional
 class ExamQuestion(BaseModel):
     """Schema for a single AWS exam question"""
     question_id: int = Field(description="Unique question identifier")
-    domain: str = Field(description="SAA-C03 domain this question belongs to")
+    domain: str = Field(description="SAP-C02 domain this question belongs to")
     topic: str = Field(description="Specific topic within the domain")
     difficulty: str = Field(description="Difficulty level", default="Associate")
     question_text: str = Field(description="The question stem")

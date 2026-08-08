@@ -5,7 +5,7 @@
 OLLAMA_BASE_URL = "http://localhost:11434"
 OLLAMA_MODEL = "llama3.1:8b"  # Change to "llama3.1:70b" if you have resources
 
-# SAA-C03 Exam Domains and Weightings
+# SAP-C02 Exam Domains and Weightings
 SAA_C03_DOMAINS = {
     "domain_1": {
         "name": "Design Secure Architectures",
