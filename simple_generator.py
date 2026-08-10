@@ -566,7 +566,7 @@ def select_topic_for_certification(certification):
     return "General", custom_topic or "General AWS exam topics"
 
 
-def generate_questions(aws_certification, topic, num_questions, start_id, allow_multi_select=False, reference_summary="", feedback_guidance=""):
+def generate_questions(aws_certification, topic, num_questions, start_id, num_multi_select=0, reference_summary="", feedback_guidance=""):
     """Generate questions for a specific AWS certification."""
     if aws_certification not in CERTIFICATIONS:
         raise ValueError(
@@ -579,11 +579,14 @@ def generate_questions(aws_certification, topic, num_questions, start_id, allow_
         "Use the official exam guide and blueprint for this certification."
     )
 
-    if allow_multi_select:
+    if num_multi_select > 0:
+        num_single = num_questions - num_multi_select
         multi_select_note = (
-            "Randomly make approximately 25-40% of questions multi-select (with either two or three correct choices). "
-            "When a question is multi-select, explicitly phrase the stem to request the number of correct answers, e.g. 'Which two of the following would meet the requirement?' or 'Which three of the following would meet the requirement?'. "
-            "Ensure the wording matches the number of correct options and that exactly that many choices are correct. For multi-select questions include clear phrasing such as 'Choose the two correct answers' or 'Choose the three correct answers', and list all correct choices in the answer section with explanations for each."
+            f"Generate exactly {num_multi_select} multi-select question(s) and {num_single} single-answer question(s). "
+            "For multi-select questions, explicitly state the required number of correct answers in the stem "
+            "(e.g., 'Which TWO of the following...', 'Which THREE of the following...'). "
+            "Ensure exactly that many choices are correct. In the answer section, list all correct choices with "
+            "individual explanations for each. Distribute the multi-select questions throughout the batch."
         )
     else:
         multi_select_note = "Generate standard single-answer multiple-choice questions with one correct answer and three plausible distractors."
@@ -616,7 +619,7 @@ Multi-Select Instructions: {multi_select_note}
     if feedback_guidance:
         prompt += f"\nSaved reviewer feedback for future alignment and improvement:\n{feedback_guidance}\n"
 
-    prompt += "\nFormat clearly with \"---\" separators between questions.\nBegin generating now:"""
+    prompt += "\nFormat clearly with \"---\" separators between questions.\nBegin generating now:"
 
     print(
         f"\n  ⏳ Generating questions {start_id}-{start_id + num_questions - 1} for {aws_certification} certification..."
@@ -647,7 +650,7 @@ Topic / Focus Area: {topic}
 Review these questions and identify whether each one:
 1. Matches the certification's exam guide or blueprint domains.
 2. Uses correct AWS terminology and exam-style structure.
-3. Includes one correct answer and three plausible wrong options.
+3. For single-answer questions: includes one correct answer and three plausible distractors. For multi-select questions: the stem explicitly states the number of correct answers, and exactly that many options are correct.
 4. Provides an accurate explanation for the correct answer.
 5. Marks any question or answer that is inconsistent, incorrect, or not aligned.
 
@@ -711,7 +714,7 @@ def save_questions(content, certification, domain, topic, num_questions):
     return filepath
 
 
-def run_batch_generation(certification, domain, topic, total_questions, do_review=True, include_multi_select=False, reference_summary="", feedback_guidance=""):
+def run_batch_generation(certification, domain, topic, total_questions, do_review=True, multi_select_ratio=0.3, reference_summary="", feedback_guidance=""):
     """Generate questions in batches."""
 
     batches = []
@@ -744,23 +747,25 @@ def run_batch_generation(certification, domain, topic, total_questions, do_revie
     all_content.append(f"**Total Questions:** {total_questions}\n")
     all_content.append(f"**Model:** {OLLAMA_MODEL}\n\n")
     all_content.append("---\n\n")
-    
+
     successful = 0
     failed = 0
-    
+
     for batch_num, num_q, start_id in batches:
         print(f"\n{'─'*40}")
         print(f"  Batch {batch_num}/{len(batches)} | Questions {start_id}-{start_id + num_q - 1}")
         print(f"{'─'*40}")
-        
+
         try:
+            num_multi_select = round(num_q * multi_select_ratio) if multi_select_ratio > 0 else 0
             raw_questions = generate_questions(
                 certification,
                 topic,
                 num_q,
                 start_id,
-                include_multi_select,
+                num_multi_select,
                 reference_summary,
+                feedback_guidance,
             )
 
             if do_review:
@@ -773,25 +778,25 @@ def run_batch_generation(certification, domain, topic, total_questions, do_revie
                 )
             else:
                 final_questions = raw_questions
-            
+
             all_content.append(f"## Batch {batch_num} (Questions {start_id}-{start_id + num_q - 1})\n\n")
             all_content.append(final_questions)
             all_content.append("\n\n---\n\n")
-            
+
             successful += 1
             print(f"  ✅ Batch {batch_num} complete!")
-            
+
         except Exception as e:
             print(f"  ❌ Batch {batch_num} failed: {e}")
             all_content.append(f"## Batch {batch_num} - FAILED\n\n")
             all_content.append(f"Error: {str(e)}\n\n---\n\n")
             failed += 1
-        
+
         # Pause between batches
         if batch_num < len(batches):
             print(f"  ⏸ Pausing 3 seconds...")
             time.sleep(3)
-    
+
     # Summary
     print(f"\n{'='*60}")
     print(f"  GENERATION COMPLETE")
@@ -799,7 +804,7 @@ def run_batch_generation(certification, domain, topic, total_questions, do_revie
     if failed > 0:
         print(f"  Failed: {failed}/{len(batches)} batches")
     print(f"{'='*60}")
-    
+
     return "".join(all_content)
 
 
@@ -832,7 +837,7 @@ def main():
     print(f"  Questions: {num_q}")
     print(f"  Review: Yes")
     print(f"  Reference docs: Enabled")
-    print(f"  Multi-select questions: Enabled")
+    print(f"  Multi-select questions: ~30% per batch")
     print(f"  Batches: {(num_q + BATCH_SIZE - 1) // BATCH_SIZE}")
     print(f"{'─'*40}")
 
@@ -853,17 +858,15 @@ def main():
     else:
         print("\nNo saved reviewer feedback found for this certification/topic.")
 
-    include_multi_select = True
-
     content = run_batch_generation(
         certification,
         domain_name,
         topic,
         num_q,
-        do_review == "y",
-        include_multi_select,
-        reference_summary,
-        feedback_guidance,
+        do_review,
+        multi_select_ratio=0.3,
+        reference_summary=reference_summary,
+        feedback_guidance=feedback_guidance,
     )
     filepath = save_questions(content, certification, domain_name, topic, num_q)
 
