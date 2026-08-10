@@ -1,5 +1,5 @@
 # main.py
-"""Main entry point for the AWS SAA-C03 Exam Question Generator"""
+"""Main entry point for the AWS SAP-C02 Exam Question Generator"""
 
 import os
 import sys
@@ -22,7 +22,7 @@ console = Console()
 def display_banner():
     """Display the application banner"""
     console.print(Panel.fit(
-        "[bold blue]AWS SAA-C03 Exam Question Generator[/bold blue]\n"
+        "[bold blue]AWS SAP-C02 Exam Question Generator[/bold blue]\n"
         "[dim]Powered by Ollama + CrewAI Multi-Agent System[/dim]\n"
         f"[dim]Model: {OLLAMA_MODEL} | Max Questions: {MAX_QUESTIONS}[/dim]",
         border_style="blue"
@@ -31,7 +31,7 @@ def display_banner():
 
 def select_domain():
     """Let user select which domain to generate questions for"""
-    console.print("\n[bold]Available SAA-C03 Domains:[/bold]\n")
+    console.print("\n[bold]Available SAP-C02 Domains:[/bold]\n")
     
     domains = list(SAA_C03_DOMAINS.items())
     for i, (key, domain) in enumerate(domains, 1):
@@ -250,7 +250,7 @@ def save_output(all_results, domain_name, topic, num_questions):
     failed_results = [r for r in all_results if r["status"] == "failed"]
     
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(f"# AWS SAA-C03 Practice Questions\n\n")
+        f.write(f"# AWS SAP-C02 Practice Questions\n\n")
         f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"**Domain:** {domain_name}\n")
         f.write(f"**Topic:** {topic}\n")
@@ -275,7 +275,7 @@ def save_output(all_results, domain_name, topic, num_questions):
     # Also save a separate answer key
     answer_key_path = filepath.replace(".md", "_answer_key.md")
     with open(answer_key_path, "w", encoding="utf-8") as f:
-        f.write(f"# Answer Key - AWS SAA-C03 Practice Questions\n\n")
+        f.write(f"# Answer Key - AWS SAP-C02 Practice Questions\n\n")
         f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"**Domain:** {domain_name}\n")
         f.write(f"**Topic:** {topic}\n\n")
@@ -381,7 +381,7 @@ def main():
         # Continue?
         again = Prompt.ask("\nGenerate more questions?", choices=["y", "n"], default="n")
         if again == "n":
-            console.print("\n[bold blue]Thank you! Good luck on your SAA-C03 exam![/bold blue]")
+            console.print("\n[bold blue]Thank you! Good luck on your SAP-C02 exam![/bold blue]")
             break
 
 

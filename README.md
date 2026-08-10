@@ -1,7 +1,7 @@
 ```markdown
-# AWS SAA-C03 Exam Question Generator
+# AWS SAP-C02 Exam Question Generator
 
-An AI-powered multi-agent system that generates high-quality multiple-choice practice questions for the AWS Solutions Architect Associate (SAA-C03) certification exam.
+An AI-powered multi-agent system that generates high-quality multiple-choice practice questions for the AWS Solutions Architect Associate (SAP-C02) certification exam.
 
 Built with **Ollama** (local LLM) and **CrewAI** (multi-agent framework), this tool runs entirely on your local machine — no API keys or cloud services required.
 
@@ -11,7 +11,7 @@ Built with **Ollama** (local LLM) and **CrewAI** (multi-agent framework), this t
 
 - 🤖 **Multi-Agent Pipeline** — Three specialized AI agents (Author, Reviewer, Editor) collaborate to produce high-quality questions
 - 📝 **1–100 Questions** per run with automatic batching
-- 🎯 **All 4 SAA-C03 Domains** covered with topic-level selection
+- 🎯 **All 4 SAP-C02 Domains** covered with topic-level selection
 - 🔄 **Automatic Retry** for failed batches
 - 📁 **Markdown Output** — Clean, formatted files ready for study
 - 💻 **100% Local** — No internet required after initial model download
@@ -199,7 +199,7 @@ python main.py
 
 The application will guide you through the following steps:
 
-1. **Select a domain** — Choose from the 4 SAA-C03 exam domains
+1. **Select a domain** — Choose from the 4 SAP-C02 exam domains
 2. **Select a topic** — Pick a specific topic or all topics within the domain
 3. **Enter number of questions** — Between 1 and 100
 4. **Review the generation plan** — See batch breakdown and time estimate
@@ -209,13 +209,13 @@ Example session:
 
 ```
 ┌─────────────────────────────────────────────────┐
-│ AWS SAA-C03 Exam Question Generator             │
+│ AWS SAP-C02 Exam Question Generator             │
 │ Powered by Ollama + CrewAI Multi-Agent System   │
 │ Model: llama3.1:8b | Max Questions: 100         │
 └─────────────────────────────────────────────────┘
 ✓ Ollama is running
 
-Available SAA-C03 Domains:
+Available SAP-C02 Domains:
 
   1. Design Secure Architectures (30%)
   2. Design Resilient Architectures (26%)
@@ -294,6 +294,33 @@ python simple_generator.py
 ```
 
 This uses a single model call per batch (no multi-agent review pipeline) but is faster and has fewer dependencies.
+
+---
+
+## Local Reference Resources
+
+The `simple_generator.py` script can use downloaded exam materials from `resources/` as source context for generation and review. It looks for:
+
+- `resources/<certification-slug>/*.pdf`
+- `resources/<certification-slug>/*.html`
+- `resources/<certification-slug>/*.md`
+- `resources/<certification-slug>/*.txt`
+
+The script also checks `local_docs/` if present.
+
+To populate `resources/`, use the downloader script:
+
+```bash
+python download_resources.py
+```
+
+Or download a single certification:
+
+```bash
+python download_resources.py --certification "AWS Certified Solutions Architect – Associate (SAA-C03)"
+```
+
+If you have PDF exam guides or FAQ pages in `resources/`, the generator will extract text and include it in prompts so question generation and review align better with official content.
 
 ---
 
@@ -395,7 +422,7 @@ uv pip install crewai crewai-tools langchain langchain-community ollama pydantic
 
 ---
 
-## Exam Domain Weights (SAA-C03)
+## Exam Domain Weights (SAP-C02)
 
 | Domain | Weight |
 |--------|--------|

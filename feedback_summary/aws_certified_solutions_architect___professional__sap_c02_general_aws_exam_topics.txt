@@ -1,0 +1,23 @@
+### Key Improvements for Future Generated Questions:
+
+1. **Ensure Correct Answers and Explanations Align:**
+   - Verify that each question's correct answers are fully supported by the provided explanations.
+   - Ensure all options (correct and incorrect) are clearly explained to avoid confusion.
+
+2. **Include All Relevant AWS Services and Concepts:**
+   - For questions involving multiple services, ensure all relevant services are mentioned in both the answer and explanation.
+   - Provide comprehensive explanations for why each option is correct or incorrect.
+
+3. **Avoid Inconsistencies Between Answers and Explanations:**
+   - Ensure that if a question has multiple correct answers, the explanation covers all of them.
+   - Correct any discrepancies between the provided answers and their explanations.
+
+4. **Use Accurate AWS Terminology:**
+   - Maintain consistency in using correct AWS terminology throughout each question.
+   - Avoid using ambiguous or outdated terms that could confuse candidates.
+
+5. **Maintain Consistent Structure:**
+   - Ensure all questions follow a consistent structure, including the use of one correct answer and three plausible wrong options.
+   - Provide accurate and detailed explanations for each option to help candidates understand the reasoning behind the correct answers.
+
+By implementing these improvements, future generated questions will be more aligned with the AWS Certified Solutions Architect – Professional (SAP-C02) certification exam guide, ensuring that candidates receive comprehensive and accurate information.

@@ -1,0 +1,78 @@
+### AWS Certified Solutions Architect – Professional (SAP-C02) Exam Summary
+
+#### Exam Domains:
+1. **Designing a Highly Available Architecture**
+   - Understanding fault tolerance, redundancy, and disaster recovery strategies.
+   - Designing architectures that can handle peak loads and scale out.
+
+2. **Designing a Secure Architecture**
+   - Implementing security best practices including encryption, access control, and compliance.
+   - Designing secure communication channels and data storage solutions.
+
+3. **Designing an Efficient Architecture**
+   - Optimizing performance through caching, load balancing, and auto-scaling.
+   - Managing costs by optimizing resource usage and selecting cost-effective services.
+
+4. **Designing a Resilient Architecture**
+   - Implementing strategies to ensure high availability and fault tolerance.
+   - Designing architectures that can recover from failures quickly.
+
+5. **Designing an Optimized Architecture**
+   - Optimizing performance through caching, load balancing, and auto-scaling.
+   - Managing costs by optimizing resource usage and selecting cost-effective services.
+
+6. **Designing a Scalable Architecture**
+   - Implementing strategies to handle increasing loads without compromising performance.
+   - Designing architectures that can scale out horizontally and vertically.
+
+7. **Designing an Optimized Network Architecture**
+   - Optimizing network performance through efficient routing, load balancing, and content delivery.
+   - Ensuring secure and reliable network communication.
+
+8. **Designing a Secure Network Architecture**
+   - Implementing security best practices for network traffic including firewalls, VPNs, and access control.
+   - Designing secure communication channels and data storage solutions.
+
+9. **Designing an Optimized Compute Architecture**
+   - Optimizing compute performance through efficient resource allocation and auto-scaling.
+   - Managing costs by optimizing resource usage and selecting cost-effective services.
+
+10. **Designing a Secure Compute Architecture**
+    - Implementing security best practices for compute resources including encryption, access control, and compliance.
+    - Designing secure communication channels and data storage solutions.
+
+#### Blueprint Topics:
+- **High Availability and Fault Tolerance**
+  - Redundancy strategies (e.g., multiple availability zones, active-active replication).
+  - Disaster recovery plans (e.g., AWS Backup, AWS CloudFormation).
+
+- **Security**
+  - IAM roles and policies.
+  - VPCs, subnets, and security groups.
+  - Encryption at rest and in transit.
+
+- **Performance Optimization**
+  - Caching strategies (e.g., Amazon ElastiCache).
+  - Load balancing (e.g., Application Load Balancer).
+  - Auto-scaling groups.
+
+- **Cost Management**
+  - Reserved instances vs. On-Demand instances.
+  - Cost allocation tags.
+  - AWS Budgets.
+
+#### Key Concepts:
+- **Fault Tolerance**: Ensuring that an application can continue to operate even if some components fail.
+- **Redundancy**: Having multiple copies of critical resources to ensure availability.
+- **Disaster Recovery**: Planning and implementing strategies to recover from catastrophic failures.
+- **Security Best Practices**: Implementing measures to protect data, applications, and infrastructure.
+- **Performance Optimization**: Techniques to improve the speed and efficiency of an application or system.
+- **Cost Management**: Strategies to reduce AWS costs while maintaining performance.
+
+### Exam Preparation Tips:
+1. **Practice with Sample Questions**: Use official practice exams and sample questions provided by AWS.
+2. **Review Blueprints**: Understand the exam blueprint to focus on key topics.
+3. **Stay Updated**: Keep up-to-date with the latest AWS services, features, and best practices.
+4. **Hands-On Experience**: Gain practical experience through hands-on labs and projects.
+
+By focusing on these domains, blueprint topics, and key concepts, you can effectively prepare for the AWS Certified Solutions Architect – Professional (SAP-C02) exam.

@@ -8,7 +8,7 @@ def create_generation_task(agent, domain_name, topic, num_questions=5, batch_num
     """Task for generating initial questions"""
     return Task(
         description=f"""Generate {num_questions} multiple-choice exam questions for the 
-        AWS Solutions Architect Associate (SAA-C03) exam.
+        AWS Solutions Architect Associate (SAP-C02) exam.
 
         **Domain:** {domain_name}
         **Topic:** {topic}
@@ -36,7 +36,7 @@ def create_generation_task(agent, domain_name, topic, num_questions=5, batch_num
         - Brief note on why each wrong answer is wrong
 
         Format each question clearly with labels and separators.""",
-        expected_output=f"""{num_questions} well-formatted AWS SAA-C03 exam questions 
+        expected_output=f"""{num_questions} well-formatted AWS SAP-C02 exam questions 
         (numbered {start_id} to {start_id + num_questions - 1}) with answers and 
         explanations, focused on {domain_name} - {topic}.""",
         agent=agent,
