@@ -1,0 +1,80 @@
+### AWS Certified Machine Learning – Specialty (MLS-C01) Exam Summary
+
+#### Exam Domains:
+1. **Data Preparation**
+2. **Model Building**
+3. **Evaluation and Deployment**
+
+#### Blueprint Topics:
+- Data Preprocessing Techniques
+- Model Selection and Training
+- Evaluation Metrics for Binary Classification
+- Feature Extraction Methods
+- Handling Imbalanced Datasets
+- Deployment Strategies
+
+#### Key Concepts:
+
+##### 1. Data Preparation
+- **Amazon SageMaker Pipe Mode**: Improves training performance by streaming data directly to the container.
+- **Handling Missing Values**: Techniques include imputation using mean/median, supervised learning for prediction, and dropping observations.
+
+##### 2. Model Building
+- **Amazon SageMaker Linear Learner**: Suitable for large datasets with high dimensionality.
+- **Feature Extraction**:
+  - **TF-IDF Matrix**: Dimension depends on the number of sentences, unigrams, and bigrams.
+  - **Word Embeddings**: Techniques like Word2Vec and Object2Vec for complex objects like sentences.
+
+##### 3. Evaluation and Deployment
+- **Binary Classification Metrics**:
+  - **Recall Rate**: Proportion of actual positives that are correctly identified.
+  - **False Positive Rate (FPR)**: Proportion of actual negatives incorrectly classified as positive.
+  - **Cost Minimization**: Adjusting class probability thresholds to balance business costs.
+
+##### Additional Concepts:
+- **Imbalanced Datasets**:
+  - Techniques include oversampling, undersampling, and SMOTE.
+- **Feature Importance**: Understanding which features contribute most to model performance.
+- **Model Deployment**: Using Amazon SageMaker for deploying trained models.
+
+### Sample Questions Summary:
+
+1. **Data Preparation**
+   - **Question**: How can a machine learning specialist accelerate the training process of large CSV datasets using Amazon SageMaker?
+     - **Answer**: Use Amazon SageMaker Pipe mode.
+
+2. **Model Building**
+   - **Question**: What are the dimensions of the tf–idf matrix for the given text corpus?
+     - **Answer**: (2, 16).
+
+3. **Evaluation and Deployment**
+   - **Question**: Which solution automates running transformation jobs on data stored in Amazon S3 with minimal setup and maintenance?
+     - **Answer**: Create an AWS Glue crawler to populate the AWS Glue Data Catalog.
+
+4. **Model Optimization**
+   - **Question**: What should a data scientist do when observing multiple runs of a model with identical parameters converging to different values?
+     - **Answer**: Decrease the learning rate and keep the batch size the same.
+
+5. **Binary Classification Evaluation**
+   - **Question**: Which confusion matrix represents a binary classification model that meets specific criteria (recall >= 80%, FPR <= 10%) with minimal business costs?
+     - **Answer**: Confusion Matrix D.
+
+6. **Fraud Detection Model**
+   - **Question**: What action will definitively help a logistic regression fraud detection model detect more than 10% of fraud cases?
+     - **Answer**: Decrease the class probability threshold.
+
+7. **Handling Imbalanced Data**
+   - **Question**: Which method is most likely to detect the greatest number of valid fraud cases in a dataset with low fraud cases?
+     - **Answer**: Oversampling using SMOTE.
+
+8. **Feature Extraction for Supervised Learning**
+   - **Question**: What approach should be used to extract features from claims for training a supervised learning model on compliance reviews?
+     - **Answer**: Apply Amazon SageMaker Object2Vec in classification mode.
+
+### Exam Preparation Tips:
+- **Practice with Sample Questions**: Utilize the provided sample questions and answers.
+- **Understand Concepts**: Focus on key concepts such as data preparation, model building, evaluation metrics, and deployment strategies.
+- **Review Documentation**: Refer to AWS documentation for detailed explanations and best practices.
+- **Stay Updated**: Keep abreast of new features and updates in AWS services.
+
+This summary should help you effectively prepare for the AWS Certified Machine Learning – Specialty exam by focusing on essential domains, blueprint topics, and key concepts.

@@ -1,0 +1,89 @@
+It appears that the provided text is a collection of sample questions and answers for AWS certification exams, specifically focusing on AWS Certified Advanced Networking - Specialty (ANS-C01) and AWS Certified Cloud Practitioner (CLF-C03). The content includes detailed explanations for each question and answer pair.
+
+To provide a structured response, I'll break down the key points from the provided text:
+
+### AWS Certified Advanced Networking - Specialty (ANS-C01)
+
+**Question 1:**
+- **Scenario:** A gaming company needs to filter incoming traffic based on source IP address.
+- **Correct Answer:** Configure an AWS Global Accelerator accelerator with an Application Load Balancer (ALB) endpoint. Attach the ALB to the Auto Scaling group. Configure an AWS WAF web ACL for the ALB to filter traffic based on the source IP address.
+
+**Question 2:**
+- **Scenario:** A company wants to implement split-view DNS.
+- **Correct Answer:** Create Amazon Route 53 private hosted zones and public hosted zones that have the same name, example.com. Associate the VPCs with the private hosted zone. Create records in each hosted zone that determine how traffic is routed.
+
+**Question 3:**
+- **Scenario:** A web application needs to scale and use certificates for client authentication.
+- **Correct Answer:** Configure an Application Load Balancer (ALB) that includes an HTTPS listener on port 443. Create an Auto Scaling group for the EC2 instances. Configure the Auto Scaling group as the target group of the ALB. Configure HTTPS as the protocol for the target group.
+
+**Question 4:**
+- **Scenario:** Migrating data from an on-premises data center to AWS using Direct Connect.
+- **Correct Answer:** Configure an S3 interface endpoint in the VPC. Update VPC route tables to route traffic to the S3 interface endpoint. Configure the S3 interface endpoint DNS name in the on-premises application.
+
+**Question 5:**
+- **Scenario:** Routing traffic through stateful firewalls between VPCs.
+- **Correct Answer:** Enable transit gateway appliance mode for the VPC attachment to the inspection VPC.
+
+**Question 6:**
+- **Scenario:** Configuring DNSSEC signing in Route 53.
+- **Correct Answer:** Recreate an asymmetric, customer managed key with an ECC_NIST_P256 key spec in us-west-2. Use this key to create a KSK.
+
+**Question 7:**
+- **Scenario:** Migrating applications from on-premises data centers to AWS using Direct Connect.
+- **Correct Answer:** Configure the local preference BGP community tag 7224:7300 for the transit VIF connected to Direct Connect connection 1.
+
+**Question 8:**
+- **Scenario:** Testing a new application version against production traffic.
+- **Correct Answer:** Implement Traffic Mirroring to replay the production requests to the test instances. Configure the source as the production instances. Configure the target as the test instances.
+
+**Question 9:**
+- **Scenario:** Protecting against DNS exfiltration vulnerability.
+- **Correct Answer:** Use Amazon Route 53 Resolver DNS Firewall. Configure a domain list with a rule group.
+
+**Question 10:**
+- **Scenario:** Logging DNS traffic for hybrid network connectivity.
+- **Correct Answer:** Configure Route 53 Resolver query logging for all VPCs. Send the logs to Amazon CloudWatch Logs. Use CloudWatch Logs Insights to query the IP address and DNS name.
+
+### AWS Certified Cloud Practitioner (CLF-C01)
+
+**Question 1:**
+- **Scenario:** Why is AWS more economical than traditional data centers?
+- **Correct Answer:** C) Amazon EC2 instances can be launched on demand when needed.
+
+**Question 2:**
+- **Scenario:** Simplifying the migration of a database to AWS.
+- **Correct Answer:** B) AWS Database Migration Service (AWS DMS)
+
+**Question 3:**
+- **Scenario:** Enabling users to find, buy, and immediately start using software solutions in their AWS environment.
+- **Correct Answer:** D) AWS Marketplace
+
+**Question 4:**
+- **Scenario:** Creating a virtual network within AWS.
+- **Correct Answer:** D) Amazon Virtual Private Cloud (Amazon VPC)
+
+**Question 5:**
+- **Scenario:** AWS responsibility under the shared responsibility model.
+- **Correct Answer:** B) Maintaining physical hardware
+
+**Question 6:**
+- **Scenario:** Component of the AWS global infrastructure used for low-latency delivery.
+- **Correct Answer:** B) Edge locations
+
+**Question 7:**
+- **Scenario:** Adding an additional layer of login security to a user's AWS Management Console.
+- **Correct Answer:** C) Enable multi-factor authentication
+
+**Question 8:**
+- **Scenario:** Identifying the user that made an API call when an Amazon EC2 instance is terminated.
+- **Correct Answer:** B) AWS CloudTrail
+
+**Question 9:**
+- **Scenario:** Sending alerts based on Amazon CloudWatch alarms.
+- **Correct Answer:** A) Amazon Simple Notification Service (Amazon SNS)
+
+**Question 10:**
+- **Scenario:** Information about prohibited actions on the AWS infrastructure.
+- **Correct Answer:** D) AWS Acceptable Use Policy
+
+These sample questions and answers provide a comprehensive overview of key concepts in AWS networking and cloud management, which are essential for passing the respective certifications.

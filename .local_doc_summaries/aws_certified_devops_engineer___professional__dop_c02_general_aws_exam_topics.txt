@@ -1,0 +1,89 @@
+### AWS Certified DevOps Engineer – Professional (DOP-C02) Exam Summary
+
+#### Exam Domains and Blueprint Topics:
+1. **Continuous Integration/Continuous Deployment (CI/CD)**
+   - Setting up CI/CD pipelines using AWS CodePipeline.
+   - Configuring triggers for pipeline execution.
+
+2. **Multi-Region Deployment**
+   - Deploying applications across multiple AWS Regions.
+   - Ensuring high availability and failover capabilities.
+
+3. **Security and Compliance**
+   - Encrypting data at rest.
+   - Managing access control with IAM policies.
+   - Implementing security patches and compliance checks.
+
+4. **Monitoring and Logging**
+   - Setting up CloudWatch for monitoring.
+   - Configuring S3 event notifications and Lambda functions for logging.
+
+5. **Networking and Content Delivery**
+   - Using Amazon Route 53 for DNS management.
+   - Configuring CloudFront for content delivery.
+
+6. **Database Management**
+   - Managing RDS instances, including Multi-AZ deployments.
+   - Implementing database replication.
+
+7. **Application Deployment**
+   - Performing blue/green deployments using ALB and Auto Scaling groups.
+   - Testing new versions of applications with limited traffic.
+
+8. **Fault Tolerance and Disaster Recovery**
+   - Configuring EC2 instances for failover.
+   - Using AWS Systems Manager for patch management.
+
+#### Key Concepts:
+- **AWS CodePipeline**: Automates the CI/CD process by defining stages, actions, and triggers.
+- **Amazon EventBridge (CloudWatch Events)**: Triggers pipeline execution based on events like code changes in CodeCommit.
+- **AWS CloudFormation StackSets**: Deploys templates across multiple AWS Regions.
+- **Amazon S3 Replication**: Ensures data is replicated across regions for high availability.
+- **Amazon Route 53**: Manages DNS records and provides failover routing policies.
+- **Amazon CloudFront**: Delivers content from edge locations, improving latency.
+- **AWS RDS Multi-AZ**: Provides high availability by replicating the database in multiple Availability Zones.
+- **Blue/Green Deployment**: Gradually shifts traffic between two environments to minimize downtime.
+- **AWS Systems Manager Patch Manager**: Automates patch management across EC2 instances.
+
+#### Sample Questions and Answers:
+1. **Question 1**:
+   - **Answer**: B
+   - **Explanation**: Configure an Amazon EventBridge rule to detect changes in the repository’s main branch and start the pipeline in response.
+
+2. **Question 2**:
+   - **Answers**: B, C, F
+   - **Explanation**: Deploy using CloudFormation StackSets with S3 replication, use CloudFront for failover routing, and Route 53 for a simple routing policy.
+
+3. **Question 3**:
+   - **Answer**: C
+   - **Explanation**: Use S3 default encryption and set a bucket policy to deny access except for IAM users in the operations group.
+
+4. **Question 4**:
+   - **Answers**: B, D, E
+   - **Explanation**: Create two Auto Scaling groups behind ALBs, use Route 53 with a weighted routing policy, and configure new instances to use the primary RDS DB instance.
+
+5. **Question 5**:
+   - **Answer**: D
+   - **Explanation**: Use AWS Systems Manager Patch Manager to create a patch baseline and apply it during a maintenance window.
+
+6. **Question 6**:
+   - **Answer**: B
+   - **Explanation**: Replace S3 event notifications with an Amazon SNS topic, subscribe the Lambda function and SQS queue to the topic.
+
+7. **Question 7**:
+   - **Answer**: A
+   - **Explanation**: Use Amazon GuardDuty for detecting unusual activity, create a Lambda function for user-id lookup, and use EventBridge to trigger notifications.
+
+8. **Question 8**:
+   - **Answer**: C
+   - **Explanation**: Configure a multi-Region DynamoDB global table that includes all three Regions.
+
+9. **Question 9**:
+   - **Answer**: D
+   - **Explanation**: Create new target groups for each Lambda function and use Route 53 with weighted rules to test the new versions.
+
+10. **Question 10**:
+    - **Answers**: C, D
+    - **Explanation**: Configure a CloudWatch alarm on memory utilization and subscribe it to an SNS topic, or use AWS Systems Manager Run Command to restart the application.
+
+These summaries and answers should help in creating relevant exam questions focusing on key concepts and domains of the AWS Certified DevOps Engineer – Professional (DOP-C02) certification.
