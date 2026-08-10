@@ -297,6 +297,33 @@ This uses a single model call per batch (no multi-agent review pipeline) but is 
 
 ---
 
+## Local Reference Resources
+
+The `simple_generator.py` script can use downloaded exam materials from `resources/` as source context for generation and review. It looks for:
+
+- `resources/<certification-slug>/*.pdf`
+- `resources/<certification-slug>/*.html`
+- `resources/<certification-slug>/*.md`
+- `resources/<certification-slug>/*.txt`
+
+The script also checks `local_docs/` if present.
+
+To populate `resources/`, use the downloader script:
+
+```bash
+python download_resources.py
+```
+
+Or download a single certification:
+
+```bash
+python download_resources.py --certification "AWS Certified Solutions Architect – Associate (SAA-C03)"
+```
+
+If you have PDF exam guides or FAQ pages in `resources/`, the generator will extract text and include it in prompts so question generation and review align better with official content.
+
+---
+
 ## Configuration
 
 Edit `config.py` to customize the application behavior:
